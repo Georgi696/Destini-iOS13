@@ -23,13 +23,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
-        let userAnswer = sender.currentTitle
-        let userTrue = storyBrain.question(userAnswer)
+        storyBrain.getNextQuestion(userChoice: sender.currentTitle!)
+        updateUI()
     }
     
     
     func updateUI(){
-        
+        questionLabel.text = storyBrain.getQuestionText()
+        choice1Button.setTitle(storyBrain.getChoise1(), for: .normal)
+        choice2Button.setTitle(storyBrain.getChoise2(), for: .normal)
     }
 
 
